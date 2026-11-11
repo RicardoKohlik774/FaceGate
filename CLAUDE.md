@@ -34,10 +34,11 @@ FaceGate/
 ├── recognition/   # Python - runs on the Raspberry Pi: camera capture, face recognition, liveness, door relay
 ├── backend/       # Python FastAPI - REST API, auth, business logic
 ├── web/           # React + TypeScript (Vite) - customer registration + admin app
-└── database/      # PostgreSQL schema, migrations, seed data
+├── database/      # PostgreSQL schema, migrations, seed data
+└── docs/          # PLAN.md (whole-project design) and PROGRESS.md (what is done, what is next)
 ```
 
-- Recognition: Python, OpenCV + a face recognition library (face_recognition / dlib or InsightFace). Talks to the backend over the REST API.
+- Recognition: Python, OpenCV with its built-in face models: YuNet (detection) + SFace (recognition). Talks to the backend over the REST API.
 - Backend: FastAPI, SQLAlchemy, PostgreSQL, JWT auth for admin. Secrets in `.env` (never committed).
 - Web: React + TypeScript.
 - Personal data stays on our own server (no third-party cloud for face data). Face data and the database should be encrypted at rest where practical.
@@ -48,8 +49,14 @@ If a stack choice above turns out to be a bad fit, propose an alternative and ex
 
 - Developing on Windows in PyCharm, project at `D:\C4a_kohlik\FaceGate`, Python 3.12 venv in `.venv`.
 - Only one camera available for now. Simulate the second camera (exit) with a laptop webcam or a video file. Mock the door relay when not running on a Pi (just log "door opened").
-- Code will later run on a Raspberry Pi; keep the recognition module runnable on both Windows and the Pi.
+- Code will later run on a Raspberry Pi 3 (door program only; backend and database run on a PC). Keep the recognition module runnable on both Windows and the Pi, and compatible with Python 3.9.
 - Code is versioned with git (GitHub).
+
+## Plan and progress
+
+- `docs/PLAN.md` is the approved design for the whole project.
+- `docs/PROGRESS.md` says which steps are done, which decisions were made, and what the next step is.
+- At the start of a session, read both. After every finished step, update `docs/PROGRESS.md`.
 
 ## Rules
 
