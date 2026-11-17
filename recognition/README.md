@@ -54,7 +54,8 @@ so that Python finds the `face_core` package in this folder.
 
 In the demo window: `e` enrols the face in front of the camera, `q` quits.
 Options: `--source 1` for another camera, `--source clip.mp4` for a video
-file, `--threshold 0.45` for stricter matching. The enrolled face is saved to
+file, `--source http://<phone-ip>:4747/video` for a phone running the
+DroidCam app on the same Wi-Fi, `--threshold 0.45` for stricter matching. The enrolled face is saved to
 `samples/enrolled.npy`; `samples/` is ignored by git because it contains face
 data.
 
