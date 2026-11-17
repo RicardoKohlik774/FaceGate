@@ -100,10 +100,7 @@ merged into `master` when the author has checked that the step works, so
 `master` always holds a working state.
 
 Remote: private repository `RicardoKohlik774/FaceGate` on GitHub (`origin`).
-Work happens on two PCs (school and home), so: `git pull` before starting,
-commit and `git push` before leaving. Each PC creates its own `.venv`
-(`py -3.12 -m venv .venv`); a venv copied from another PC does not work
-because it stores that PC's paths.
+Push after committing, so GitHub always has the latest work.
 
 ## Log
 
@@ -111,7 +108,8 @@ because it stores that PC's paths.
   `.env.example`, root `README.md`, a `README.md` in each of the four part
   folders, `docs/PLAN.md`, this file. `CLAUDE.md` updated: points to `docs/`,
   names YuNet + SFace, notes the Pi 3. Committed on branch `step-0-skeleton`.
-- **2026-11-17** – Continued on a second PC (home). Decided: USB webcam on the
-  Pi, Stripe test mode. GitHub repository created and connected as `origin`.
-  `CLAUDE.md` now lists both PCs. Removed `.claude/settings.json` from the
+- **2026-11-17** – Moved to the home PC (`C:\RK\TP\FaceGate`), now the only
+  development PC. Decided: USB webcam on the Pi, Stripe test mode. GitHub
+  repository created and connected as `origin`. `CLAUDE.md` updated with the
+  new project path and the repository. Removed `.claude/settings.json` from the
   repository; `.claude/settings.local.json` is ignored.

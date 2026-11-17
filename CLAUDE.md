@@ -47,18 +47,16 @@ If a stack choice above turns out to be a bad fit, propose an alternative and ex
 
 ## Current situation
 
-- Developing on Windows in PyCharm on two PCs: school (`D:\C4a_kohlik\FaceGate`) and home (`C:\RK\TP\FaceGate`). Each PC has its own Python 3.12 venv in `.venv` (not committed, not copied between PCs).
+- Developing on Windows in PyCharm, project at `C:\RK\TP\FaceGate`, Python 3.12 venv in `.venv`.
 - Only one camera available for now. Simulate the second camera (exit) with a laptop webcam or a video file. Mock the door relay when not running on a Pi (just log "door opened").
 - Code will later run on a Raspberry Pi 3 (door program only; backend and database run on a PC). Keep the recognition module runnable on both Windows and the Pi, and compatible with Python 3.9.
-- Code is versioned with git in a private GitHub repository (`RicardoKohlik774/FaceGate`), which is also how work moves between the two PCs: push when leaving one PC, pull when starting on the other.
+- Code is versioned with git in a private GitHub repository (`RicardoKohlik774/FaceGate`).
 
 ## Plan and progress
 
 - `docs/PLAN.md` is the approved design for the whole project.
 - `docs/PROGRESS.md` says which steps are done, which decisions were made, and what the next step is.
 - At the start of a session, read both. After every finished step, update `docs/PROGRESS.md`.
-- Claude Code's own memory does not move between the PCs, so these two files are the only shared record. Write every decision into them.
-
 ## Rules
 
 - All code in English: identifiers, comments, strings, commit messages. Czech only in user-facing UI text where it makes sense.
