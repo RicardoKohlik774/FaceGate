@@ -89,8 +89,6 @@ kernel 6.1.21-v7+, armv7l, Python 3.9.
 
 - Can the Pi's SD card be erased, or is a second card needed? The Pi and the
   card are borrowed from the school – the author will ask there first.
-- No GitHub remote is configured in this repository yet (`git remote -v` is
-  empty). Create a private repository and add it before the first push.
 - The remaining decisions from section 8 of `PLAN.md`: one-time code or PIN,
   one-time purchase or subscription, Docker or a normal PostgreSQL
   installation.
@@ -101,9 +99,19 @@ One branch per step (`step-0-skeleton`, `step-1-face-core`, …). A branch is
 merged into `master` when the author has checked that the step works, so
 `master` always holds a working state.
 
+Remote: private repository `RicardoKohlik774/FaceGate` on GitHub (`origin`).
+Work happens on two PCs (school and home), so: `git pull` before starting,
+commit and `git push` before leaving. Each PC creates its own `.venv`
+(`py -3.12 -m venv .venv`); a venv copied from another PC does not work
+because it stores that PC's paths.
+
 ## Log
 
 - **2026-11-11** – Plan written and approved. Step 0 done: `.gitignore`,
   `.env.example`, root `README.md`, a `README.md` in each of the four part
   folders, `docs/PLAN.md`, this file. `CLAUDE.md` updated: points to `docs/`,
   names YuNet + SFace, notes the Pi 3. Committed on branch `step-0-skeleton`.
+- **2026-11-17** – Continued on a second PC (home). Decided: USB webcam on the
+  Pi, Stripe test mode. GitHub repository created and connected as `origin`.
+  `CLAUDE.md` now lists both PCs. Removed `.claude/settings.json` from the
+  repository; `.claude/settings.local.json` is ignored.

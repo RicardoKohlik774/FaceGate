@@ -409,13 +409,13 @@ Step 12 can move earlier as soon as the Pi is available. Right after step 2 we r
 
 **Decisions for you (my recommendation in brackets)**
 1. Face library: YuNet + SFace instead of `face_recognition` or InsightFace. **Decided 2026-11-11: YuNet + SFace.**
-2. Payment gateway: Stripe test mode or GoPay sandbox (Stripe).
+2. Payment gateway: Stripe test mode or GoPay sandbox (Stripe). **Decided 2026-11-17: Stripe test mode.**
 3. Customer login: BankID only, or also e-mail + password (BankID only – less code, no stored passwords).
 4. Fallback: one-time code from the account, or a permanent personal PIN (one-time code – a 4-digit permanent PIN is easy to guess and to share). Either needs a keypad at the door; a USB numeric keypad is enough.
 5. Membership: one-time purchase for N days, or automatic monthly subscription (one-time – much simpler).
 6. Where do the backend and database run at the defence: your laptop, or on the Pi itself? **Decided 2026-11-11: on a PC/laptop.** The Pi 3 has 1 GB of RAM and runs only the door program.
 7. PostgreSQL on Windows: Docker or a normal installation (depends on what the school PC allows).
-8. Which Raspberry Pi model and camera. **Known 2026-11-11: Raspberry Pi 3.** It is slower than a Pi 4 but usable for the thin door program if it gets a 64-bit system; details in `PROGRESS.md`. The camera type (USB webcam or ribbon-cable Pi Camera) is still open.
+8. Which Raspberry Pi model and camera. **Known 2026-11-11: Raspberry Pi 3.** It is slower than a Pi 4 but usable for the thin door program if it gets a 64-bit system; details in `PROGRESS.md`. **Decided 2026-11-17: USB webcam**, so plain OpenCV capture works the same on Windows and the Pi.
 
 **Legal / privacy risks**
 - A face template is *biometric data*, a special category under GDPR. It needs explicit consent, and consent is only valid if the person has a real alternative – that is exactly what the fallback code is for. Good point for the defence.

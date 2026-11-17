@@ -4,7 +4,7 @@ Self-service entry system for small facilities (gyms, coworking spaces, clubs).
 A customer registers and pays online, takes a selfie, and from then on a camera
 at the door recognises their face, checks the membership and opens the door.
 
-School project (ročníkový projekt), SPŠE Ječná, Prague.
+School project, SPŠE Ječná, Prague.
 
 ## Parts
 
@@ -34,7 +34,9 @@ get "how to run" instructions when its first code is added.
 
 ## Setup
 
-1. Python 3.12 virtual environment in `.venv`.
-2. Copy `.env.example` to `.env` and fill in the values. Never commit `.env`.
+1. `git clone https://github.com/RicardoKohlik774/FaceGate.git`
+2. Create a Python 3.12 virtual environment on this PC: `py -3.12 -m venv .venv`
+   (never copy `.venv` from another PC – it stores that PC's paths).
+3. Copy `.env.example` to `.env` and fill in the values. Never commit `.env`.
 
 Only sandbox / test modes of BankID and the payment gateway are used.
