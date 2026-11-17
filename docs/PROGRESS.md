@@ -59,6 +59,8 @@ person gets MATCH while another person gets NO MATCH.
 | 2026-11-11 | Backend and database run on a PC/laptop, not on the Pi | The Pi 3 has 1 GB RAM; the door program alone fits easily, PostgreSQL + backend on top would be tight. |
 | 2026-11-11 | Keep the Raspberry Pi 3 as the door device | See "Hardware" below. |
 | 2026-11-11 | Code in `recognition/` stays compatible with Python 3.9 | Keeps the old Bullseye system usable as a fallback. Costs almost nothing: no `match`, no `tomllib`, `from __future__ import annotations` at the top of files. |
+| 2026-11-17 | Door camera on the Pi: USB webcam | Plain `cv2.VideoCapture` works the same on Windows and the Pi; no `picamera2` needed. |
+| 2026-11-17 | Payment gateway: Stripe test mode | Test account works minutes after sign-up, the payment page is hosted by Stripe (card numbers never touch our server), and the Stripe CLI delivers webhooks to `localhost`. GoPay's sandbox needs credentials requested from GoPay. |
 
 ## Hardware
 
@@ -85,15 +87,13 @@ kernel 6.1.21-v7+, armv7l, Python 3.9.
 
 ## Open questions for the author
 
-- Which camera will be on the Pi: USB webcam or the ribbon-cable Pi Camera?
-  The ribbon camera needs the `picamera2` library instead of plain OpenCV
-  capture.
-- Can the Pi's SD card be erased, or is a second card needed?
+- Can the Pi's SD card be erased, or is a second card needed? The Pi and the
+  card are borrowed from the school – the author will ask there first.
 - No GitHub remote is configured in this repository yet (`git remote -v` is
   empty). Create a private repository and add it before the first push.
-- The remaining decisions from section 8 of `PLAN.md`: Stripe or GoPay,
-  one-time code or PIN, one-time purchase or subscription, Docker or a normal
-  PostgreSQL installation.
+- The remaining decisions from section 8 of `PLAN.md`: one-time code or PIN,
+  one-time purchase or subscription, Docker or a normal PostgreSQL
+  installation.
 
 ## Git workflow
 
