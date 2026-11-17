@@ -7,6 +7,7 @@ recognition/config.toml
 # --- Face data (never commit) ---
 # Model files are downloaded by recognition/scripts/download_models.py
 recognition/face_core/models/*.onnx
+recognition/face_core/models/*.part
 # Sample videos and enrolled faces contain real people
 recognition/samples/
 *.npy

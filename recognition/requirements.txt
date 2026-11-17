@@ -1,0 +1,8 @@
+# Exact OpenCV version: the PC (registration selfie) and the Pi (door camera)
+# must run the same face models in the same way, or their embeddings
+# would not be comparable.
+opencv-python==4.14.0.94
+numpy
+
+# Tests only
+pytest
