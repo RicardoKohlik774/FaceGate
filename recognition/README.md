@@ -31,11 +31,11 @@ does that.
 `face_core` will also be used by the backend for the registration selfie, so
 the selfie and the door camera always use exactly the same models.
 
-## Two cameras, one camera available
+## Two cameras
 
 Each camera has a direction (entry or exit). A camera source is either a camera
-number or a video file, so the missing second camera can be replaced by a video
-file or the laptop webcam through configuration.
+number or a video file. The project has two Logitech Brio 300 webcams; when they
+are not connected, a video file or the laptop webcam can replace them.
 
 When not running on a Pi, the door relay is replaced by a mock that only logs
 "door opened".
