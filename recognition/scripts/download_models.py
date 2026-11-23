@@ -1,4 +1,4 @@
-"""Download the YuNet and SFace model files from the OpenCV Zoo.
+"""Download the model files: YuNet and SFace (OpenCV Zoo), MiniFASNet (liveness).
 
 The model files are not stored in git (one of them is 38 MB). Run this once
 on every machine, from the recognition/ folder:
@@ -6,8 +6,9 @@ on every machine, from the recognition/ folder:
     python -m scripts.download_models
 
 Each file is checked against its SHA-256 checksum, so a broken or changed
-download is never used. The checksums are the official ones published in the
-OpenCV Zoo repository.
+download is never used. The YuNet and SFace checksums are the official ones
+published in the OpenCV Zoo repository. For the liveness model we found no
+published checksum, so it is of the file we tested on 2026-11-23.
 """
 from __future__ import annotations
 
@@ -17,9 +18,14 @@ import sys
 import urllib.request
 from pathlib import Path
 
-from face_core import detector, embedder
+from face_core import detector, embedder, liveness
 
 ZOO_URL = "https://github.com/opencv/opencv_zoo/raw/main/models"
+# One fixed commit of facenox/face-antispoof-onnx (formerly suriAI).
+ANTISPOOF_URL = (
+    "https://raw.githubusercontent.com/facenox/face-antispoof-onnx/"
+    "2f8dd93dd0fd9d120f08e83d9020719f67ffdb68"
+)
 
 # (where to save it, URL, expected SHA-256)
 MODELS = [
@@ -32,6 +38,11 @@ MODELS = [
         embedder.MODEL_PATH,
         ZOO_URL + "/face_recognition_sface/face_recognition_sface_2021dec.onnx",
         "0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79",
+    ),
+    (
+        liveness.MODEL_PATH,
+        ANTISPOOF_URL + "/models/best/98.20/best_model.onnx",
+        "af2381b88f38769222ed93379e12444e2a50814575de1c46170de570c55a42b6",
     ),
 ]
 

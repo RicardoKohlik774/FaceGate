@@ -24,6 +24,7 @@ import numpy as np
 
 from face_core.detector import FaceDetector
 from face_core.embedder import FaceEmbedder, cosine_similarity
+from scripts.demo_common import GREEN, RED, YELLOW, draw_face, open_camera
 
 SAMPLES_DIR = Path(__file__).resolve().parent.parent / "samples"
 ENROLLED_PATH = SAMPLES_DIR / "enrolled.npy"
@@ -33,20 +34,6 @@ ENROLLED_PATH = SAMPLES_DIR / "enrolled.npy"
 MATCH_THRESHOLD = 0.40
 
 WINDOW_NAME = "FaceGate - step 1 demo"
-GREEN = (0, 200, 0)
-RED = (0, 0, 230)
-YELLOW = (0, 220, 220)
-
-
-def parse_source(value: str) -> int | str:
-    """'0' -> camera number 0, anything else -> path to a video file."""
-    return int(value) if value.isdigit() else value
-
-
-def draw_face(frame: np.ndarray, face: np.ndarray, text: str, color: tuple) -> None:
-    x, y, width, height = face[:4].astype(int)
-    cv2.rectangle(frame, (x, y), (x + width, y + height), color, 2)
-    cv2.putText(frame, text, (x, max(y - 10, 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
 
 
 def main() -> int:
@@ -63,7 +50,7 @@ def main() -> int:
     if enrolled is not None:
         print(f"Loaded enrolled face from {ENROLLED_PATH}")
 
-    camera = cv2.VideoCapture(parse_source(args.source))
+    camera = open_camera(args.source)
     if not camera.isOpened():
         print(f"Cannot open camera or video: {args.source}")
         return 1

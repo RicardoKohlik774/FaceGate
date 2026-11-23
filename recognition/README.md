@@ -19,9 +19,12 @@ does that.
 |---|---|
 | `face_core/detector.py` | Finds faces in an image (YuNet). Returns the box, five face points and a score for each face. |
 | `face_core/embedder.py` | Turns a face into an embedding of 128 numbers (SFace) and compares two embeddings with cosine similarity. |
+| `face_core/liveness.py` | Scores how real a face looks (MiniFASNet) and says "live" after 8 real frames in a row. |
 | `face_core/models/` | The `.onnx` model files. Downloaded by a script, not stored in git. |
-| `scripts/download_models.py` | Downloads both model files and checks their SHA-256 checksums. |
+| `scripts/download_models.py` | Downloads the three model files and checks their SHA-256 checksums. |
 | `scripts/demo_match.py` | Webcam demo: enrol your face, then see MATCH / NO MATCH live. |
+| `scripts/demo_liveness.py` | Webcam demo: REAL / SPOOF score, LIVE after enough REAL frames in a row. |
+| `scripts/demo_common.py` | Helpers shared by the demos (opening a camera, drawing a face box). |
 | `tests/` | pytest tests (no camera or model files needed). |
 | `gate/` | Planned: the door program (camera loop, door relay, fallback code, backend client). |
 
@@ -46,13 +49,17 @@ virtual environment active (`..\.venv\Scripts\activate` on Windows).
 pip install -r requirements.txt
 python -m scripts.download_models     # once per machine
 python -m pytest                      # tests
-python -m scripts.demo_match          # webcam demo
+python -m scripts.demo_match          # recognition demo
+python -m scripts.demo_liveness       # liveness demo
 ```
 
 Scripts are started with `python -m scripts.<name>` (not `python scripts\<name>.py`)
 so that Python finds the `face_core` package in this folder.
 
-In the demo window: `e` enrols the face in front of the camera, `q` quits.
+In the recognition demo window: `e` enrols the face in front of the camera, `q` quits.
+In the liveness demo window: `r` clears the scores, `q` quits and prints a summary.
+It also measures match, face width and squash (how flat the face looks). A face wider than 22 % of the picture
+shows STEP BACK and cannot be LIVE; match and squash only inform.
 Options: `--source 1` for another camera, `--source clip.mp4` for a video
 file, `--source http://<phone-ip>:4747/video` for a phone running the
 DroidCam app on the same Wi-Fi, `--threshold 0.45` for stricter matching. The enrolled face is saved to
