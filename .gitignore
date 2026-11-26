@@ -28,7 +28,10 @@ web/dist/
 # --- IDE and OS ---
 # PyCharm's .idea/ is tracked on purpose; its own .idea/.gitignore hides the personal files.
 .vscode/
-# Claude Code's personal settings for this machine (CLAUDE.md is shared and stays tracked)
+# Working notes and AI assistant instructions stay on the development machine
+CLAUDE.md
+docs/PROGRESS.md
+# Claude Code's personal settings for this machine
 .claude/settings.local.json
 Thumbs.db
 .DS_Store

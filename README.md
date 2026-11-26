@@ -22,9 +22,8 @@ Next: **Milestone A** – a person stands in front of the camera, the backend
 checks the face and the membership, and the door program logs "door opened"
 (or "denied" with a reason).
 
-The detailed log, test results and decisions are in
-[`docs/PROGRESS.md`](docs/PROGRESS.md); the whole design is in
-[`docs/PLAN.md`](docs/PLAN.md).
+The whole design (database, API, recognition, liveness, registration flow,
+order of work) is in [`docs/PLAN.md`](docs/PLAN.md).
 
 ## Plan
 
