@@ -25,7 +25,7 @@ The migrations are in git, so every machine gets exactly the same tables.
 | `alembic.ini` | Alembic settings. The database address is not here, it comes from `.env`. |
 | `migrations/env.py` | Connects Alembic to the database and to the table classes. |
 | `migrations/versions/` | The migrations, oldest first (file names start with the date). |
-| `seed.py` | Planned: demo data (plans, two devices, demo users). |
+| `seed.py` | Demo data: 3 plans, 2 devices (entry, exit), 3 users (valid, expired, no membership). No face data. |
 
 ## Tables
 
@@ -59,6 +59,17 @@ python -m alembic upgrade head        # create or update the tables
 python -m alembic current             # which migration the database is at
 python -m alembic check               # do models.py and the database match?
 ```
+
+Demo data, into the development database only:
+
+```
+python seed.py            # only into an empty database
+python seed.py --reset    # first delete ALL data, then seed again
+```
+
+It prints the two device keys once; the database keeps only their hashes.
+Keep them for the door program, never commit them, or get new ones with
+`--reset`.
 
 After changing `backend/app/models.py`:
 

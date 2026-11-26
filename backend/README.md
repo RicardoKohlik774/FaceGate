@@ -21,11 +21,12 @@ Done so far: the skeleton with `GET /api/health` and the first tables.
 | `app/config.py` | Settings loaded from `.env` in the project root. |
 | `app/db.py` | Database connection; one session per request. |
 | `app/models.py` | Database tables as Python classes. How they get into the database: `database/README.md`. |
+| `app/security.py` | Device keys: create a random key, and hash it (only the hash is stored). |
 | `app/routers/health.py` | `GET /api/health`: is the backend running and can it reach the database? |
-| `tests/` | pytest tests on the separate `facegate_test` database: health check, table rules, migrations. Each test's changes are rolled back. |
+| `tests/` | pytest tests on the separate `facegate_test` database: health check, table rules, migrations, seed script. Each test's changes are rolled back. |
 
 Planned: `app/schemas.py` (request and response
-shapes), `app/security.py` (passwords, JWT, device keys, encryption),
+shapes), more of `app/security.py` (passwords, JWT, encryption),
 `app/services/` (business logic, tested with pytest).
 
 ## How it connects to the database
