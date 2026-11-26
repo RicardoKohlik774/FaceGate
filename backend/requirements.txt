@@ -1,0 +1,12 @@
+# Exact versions, so every machine runs the backend the same way.
+fastapi==0.165.0
+uvicorn[standard]==0.54.0
+sqlalchemy==2.1.9
+# Database driver written only in Python. The usual psycopg driver ships a
+# compiled file that Windows' Smart App Control blocks.
+pg8000==1.31.6
+pydantic-settings==2.16.3
+
+# Tests only
+pytest==9.2.0
+httpx==0.29.0
