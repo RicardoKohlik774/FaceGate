@@ -53,6 +53,11 @@ python -m scripts.demo_match          # recognition demo
 python -m scripts.demo_liveness       # liveness demo
 ```
 
+On the Raspberry Pi, install `opencv-python-headless` (same version as in
+`requirements.txt`) instead of `opencv-python`: the Pi has no desktop, and the
+normal package needs graphics libraries it does not have. The demos open
+windows, so they run only on Windows.
+
 Scripts are started with `python -m scripts.<name>` (not `python scripts\<name>.py`)
 so that Python finds the `face_core` package in this folder.
 
