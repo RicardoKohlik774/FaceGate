@@ -82,7 +82,7 @@ Why these choices:
 
 ## 2. Database schema (PostgreSQL)
 
-Conventions: integer `id` primary keys, all times `TIMESTAMPTZ` (stored in UTC), money as integer in haléře (no float rounding errors), status columns are `TEXT` with a `CHECK` constraint (easier to change than PostgreSQL enums).
+Conventions: integer `id` primary keys, all times `TIMESTAMPTZ` (stored in UTC), money as an integer number of whole Czech crowns (no float rounding errors; Stripe wants haléře, so only the Stripe call multiplies by 100), status columns are `TEXT` with a `CHECK` constraint (easier to change than PostgreSQL enums).
 
 ### users – customers
 | column | type | note |
@@ -131,7 +131,7 @@ A separate table (not a boolean on `users`) because we must be able to prove *wh
 Encrypted in the application (Fernet), so a stolen database dump alone does not reveal face templates. Matching happens in backend memory (decrypt all, compare). For hundreds of users that takes well under a millisecond, so no vector database is needed.
 
 ### membership_plans – what can be bought
-`id`, `name`, `duration_days INT`, `price_minor INT` (haléře), `currency TEXT`, `is_active BOOL`.
+`id`, `name`, `duration_days INT`, `price_czk INT` (whole crowns), `is_active BOOL`.
 
 ### memberships – what a user bought
 | column | type | note |
@@ -153,7 +153,7 @@ Encrypted in the application (Fernet), so a stolen database dump alone does not 
 | membership_id | FK memberships, SET NULL | |
 | provider | TEXT | `stripe` / `mock` |
 | provider_session_id | TEXT UNIQUE | the gateway's ID; UNIQUE stops double processing |
-| amount_minor, currency | INT, TEXT | |
+| amount_czk | INT | whole crowns |
 | status | TEXT | `created` / `paid` / `failed` |
 | created_at, paid_at | TIMESTAMPTZ | |
 

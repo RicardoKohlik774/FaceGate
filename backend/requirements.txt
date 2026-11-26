@@ -6,6 +6,8 @@ sqlalchemy==2.1.9
 # compiled file that Windows' Smart App Control blocks.
 pg8000==1.31.6
 pydantic-settings==2.16.3
+# Database migrations (used from the database/ folder)
+alembic==1.20.1
 
 # Tests only
 pytest==9.2.0

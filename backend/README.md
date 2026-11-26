@@ -11,7 +11,7 @@ The REST API (Python, FastAPI). The only part that talks to the database.
 - Records entry and exit events and who is inside.
 - Admin API: presence, history, statistics, user management, CSV export.
 
-Done so far: the skeleton with `GET /api/health`.
+Done so far: the skeleton with `GET /api/health` and the first tables.
 
 ## Layout
 
@@ -20,10 +20,11 @@ Done so far: the skeleton with `GET /api/health`.
 | `app/main.py` | Creates the FastAPI app and registers the routers. |
 | `app/config.py` | Settings loaded from `.env` in the project root. |
 | `app/db.py` | Database connection; one session per request. |
+| `app/models.py` | Database tables as Python classes. How they get into the database: `database/README.md`. |
 | `app/routers/health.py` | `GET /api/health`: is the backend running and can it reach the database? |
-| `tests/` | pytest tests. They use the separate `facegate_test` database. |
+| `tests/` | pytest tests on the separate `facegate_test` database: health check, table rules, migrations. Each test's changes are rolled back. |
 
-Planned: `app/models.py` (tables), `app/schemas.py` (request and response
+Planned: `app/schemas.py` (request and response
 shapes), `app/security.py` (passwords, JWT, device keys, encryption),
 `app/services/` (business logic, tested with pytest).
 
@@ -62,3 +63,5 @@ CREATE ROLE facegate LOGIN PASSWORD '<the password from DATABASE_URL>';
 CREATE DATABASE facegate OWNER facegate;
 CREATE DATABASE facegate_test OWNER facegate;
 ```
+
+4. Create the tables: `python -m alembic upgrade head` in `database/`.
